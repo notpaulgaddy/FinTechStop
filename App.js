@@ -1,112 +1,109 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
+// import {createAppContainer} from 'react-navigation';
+// import {createNativeStackNavigator} from "react-navigation-stack";
 
-import React from 'react';
-import type {Node} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+// import Profile from "./screens/Profile";
+// import Home from "./screens/Home";
+// import Login from "./screens/Login";
+// import Signup from "./screens/Signup";
+// import Search from "./screens/Search";
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+// const navigator = createNativeStackNavigator({
+//     Login: Login
+// },
+// {
+//     initialRouteName:"Login",
+//     defaultNavigationOptions:{
+//         title:'Login'
+//     }
+// }
+// );
 
-const Section = ({children, title}): Node => {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-};
+// export default createAppContainer(navigator);
 
-const App: () => Node = () => {
-  const isDarkMode = useColorScheme() === 'dark';
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
+import React,{useState,useEffect,useContext} from "react";
+import {StyleSheet,TextInput,SafeAreaView,Text,TouchaableOpacity,View} from "react-native";
 
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.js</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
-};
+const Login = ({navigation}) => {
+    const [email,setEmail] = useState("");
+    const [password,setPassword] = useState("");
+
+    const goToSignup = () => {
+        navigation.navigate("Signup")
+    };
+
+    return (
+        <>
+            <View style={styles.container}>
+                <Text style={styles.topLogo}>FinTechStop</Text>
+                <Text style={styles.textTop}>Sign in to FinTechStop</Text>
+                <Text style={styles.textBottom}>using your FinTechStop account</Text>
+                <View style={styles.formArea}>
+                <View style={styles.inputArea}>
+                  <TextInput 
+                  style={styles.placeholderText}
+                  placeholder="Email"
+                  keyboardType="email-address"
+                  placeholderTextColor="black"/>
+                </View>
+                <View style={styles.inputArea}>
+                  <TextInput 
+                  style={styles.placeholderText}
+                  placeholder="Email"
+                  keyboardType="email-address"
+                  placeholderTextColor="black"/>
+                </View>
+            </View>
+            </View>
+        </>
+    )
+}
+
+export default Login;
 
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
-
-export default App;
+    container:{
+        flex:1,
+        backgroundColor:"#23273C",
+        alignItems:"center",
+        justifyContent:"center",
+        width:"100%"
+    },
+    topLogo:{
+      color:'white',
+      fontSize:50,
+      fontWeight:'bold',
+      marginTop:-550,
+      width:"70%",
+      textAlign:'center'
+    },
+    textTop:{
+      color:'white',
+      fontWeight:'bold',
+      fontSize:25,
+      marginTop:'10%',
+      width:"70%",
+      textAlign:'center'
+    },
+    textBottom:{
+      color:"#D8D8D8",
+      fontSize:25,
+      width:"70%",
+      textAlign:'center'
+    },
+    formArea:{
+      marginTop:15,
+      width:"70%",
+    },
+    inputArea:{
+      backgroundColor:'white',
+      borderRadius:30,
+      
+      height:45,
+      marginBottom:20,
+    },
+    placeholderText:{
+      marginTop:15,
+      marginRight:150,
+    }
+})
