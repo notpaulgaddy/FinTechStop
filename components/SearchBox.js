@@ -11,12 +11,12 @@ const SearchBox = (placeholderText,type) => {
             borderWidth: "1",
             borderRadius:25,
             justifyContent:"space-evenly",
-            marginTop:15
+            marginTop:"20%"
         }}>
             <View style={{padding:3}}>
                 <Ionicons name="search-outline" size={35} color="black"/>
             </View>
-            <View style={{padding:3,width:"60%"}}>
+            <View style={{padding:3,width:"70%"}}>
                 <TextInput
                 style={{flexGrow:1}}
                 placeholderTextColor="black"
